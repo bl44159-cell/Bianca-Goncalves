@@ -1,0 +1,91 @@
+import os
+import math
+
+def limpar_tela():
+    """Limpa o terminal para manter a interface organizada"""
+    os.system('cls' if os.name == 'nt' else 'clear')
+
+def somar(a, b):
+    return a + b
+
+def subtrair(a, b):
+    return a - b
+
+def multiplicar(a, b):
+    return a * b
+
+def dividir(a, b):
+    if b == 0:
+        return "⚠️ Erro: Divisão por zero não é permitida!"
+    return a / b
+
+def potencia(a, b):
+    return a ** b
+
+def raiz_quadrada(a):
+    if a < 0:
+        return "⚠️ Erro: Não existe raiz quadrada de número negativo nos números reais!"
+    return math.sqrt(a)
+
+def obter_numero(mensagem):
+    """Garante que o usuário digite um número válido"""
+    while True:
+        try:
+            return float(input(mensagem))
+        except ValueError:
+            print("⚠️ Entrada inválida! Por favor, digite um número.")
+
+def main():
+    while True:
+        limpar_tela()
+        print("==============================")
+        print("    CALCULADORA EM PYTHON     ")
+        print("==============================")
+        print("1. Somar (+)")
+        print("2. Subtrair (-)")
+        print("3. Multiplicar (x)")
+        print("4. Dividir (/)")
+        print("5. Potenciação (x^y)")
+        print("6. Raiz Quadrada (√x)")
+        print("7. Sair")
+        
+        opcao = input("\nEscolha uma opção (1-7): ").strip()
+
+        if opcao == "7":
+            limpar_tela()
+            print("Calculadora encerrada. Até logo! 👋\n")
+            break
+
+        if opcao in ["1", "2", "3", "4", "5"]:
+            limpar_tela()
+            print(f"--- Operação Selecionada: Opção {opcao} ---")
+            num1 = obter_numero("Digite o primeiro número: ")
+            num2 = obter_numero("Digite o segundo número: ")
+
+            if opcao == "1":
+                resultado = somar(num1, num2)
+            elif opcao == "2":
+                resultado = subtrair(num1, num2)
+            elif opcao == "3":
+                resultado = multiplicar(num1, num2)
+            elif opcao == "4":
+                resultado = dividir(num1, num2)
+            elif opcao == "5":
+                resultado = potencia(num1, num2)
+
+            print(f"\n👉 Resultado: {resultado}")
+
+        elif opcao == "6":
+            limpar_tela()
+            print("--- Operação Selecionada: Raiz Quadrada ---")
+            num = obter_numero("Digite o número: ")
+            resultado = raiz_quadrada(num)
+            print(f"\n👉 Resultado: {resultado}")
+
+        else:
+            print("\n⚠️ Opção inválida! Escolha entre 1 e 7.")
+
+        input("\nPressione ENTER para continuar...")
+
+if __name__ == "__main__":
+    main()
