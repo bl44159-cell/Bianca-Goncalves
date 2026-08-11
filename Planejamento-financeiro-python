@@ -1,0 +1,31 @@
+def calcular_orcamento():
+    print("=========================================")
+    print("   SIMULADOR DE PLANEJAMENTO FINANCEIRO  ")
+    print("=========================================\n")
+    
+    try:
+        salario = float(input("Digite o seu salário líquido total (R$): "))
+        
+        essenciais = salario * 0.50
+        lazer = salario * 0.30
+        investimentos = salario * 0.20
+        
+        print("\n-----------------------------------------")
+        print(f"💰 SALÁRIO TOTAL: R$ {salario:.2f}")
+        print("-----------------------------------------")
+        print(f"🏠 Essenciais (50%):    R$ {essenciais:.2f}")
+        print(f"🥳 Lazer/Desejos (30%): R$ {lazer:.2f}")
+        print(f"📈 Investimentos (20%): R$ {investimentos:.2f}")
+        print("-----------------------------------------")
+        
+        # Sugestão de divisão dos investimentos
+        print("\n💡 Sugestão para a fatia de INVESTIMENTOS (R$ {:.2f}):".format(investimentos))
+        print(f"   • Reserva de Emergência / Renda Fixa (70%): R$ {investimentos * 0.70:.2f}")
+        print(f"   • Renda Variável / Ações / FIIs (30%):     R$ {investimentos * 0.30:.2f}")
+        print("=========================================\n")
+        
+    except ValueError:
+        print("⚠️ Por favor, digite um número válido para o salário.")
+
+if __name__ == "__main__":
+    calcular_orcamento()
