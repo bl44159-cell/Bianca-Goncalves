@@ -1,31 +1,50 @@
+import os
+
+def limpar_tela():
+    """Limpa o terminal para manter a interface organizada"""
+    os.system('cls' if os.name == 'nt' else 'clear')
+
 def calcular_orcamento():
-    print("=========================================")
-    print("   SIMULADOR DE PLANEJAMENTO FINANCEIRO  ")
-    print("=========================================\n")
-    
-    try:
-        salario = float(input("Digite o seu salário líquido total (R$): "))
-        
-        essenciais = salario * 0.50
-        lazer = salario * 0.30
-        investimentos = salario * 0.20
-        
-        print("\n-----------------------------------------")
-        print(f"💰 SALÁRIO TOTAL: R$ {salario:.2f}")
-        print("-----------------------------------------")
-        print(f"🏠 Essenciais (50%):    R$ {essenciais:.2f}")
-        print(f"🥳 Lazer/Desejos (30%): R$ {lazer:.2f}")
-        print(f"📈 Investimentos (20%): R$ {investimentos:.2f}")
-        print("-----------------------------------------")
-        
-        # Sugestão de divisão dos investimentos
-        print("\n💡 Sugestão para a fatia de INVESTIMENTOS (R$ {:.2f}):".format(investimentos))
-        print(f"   • Reserva de Emergência / Renda Fixa (70%): R$ {investimentos * 0.70:.2f}")
-        print(f"   • Renda Variável / Ações / FIIs (30%):     R$ {investimentos * 0.30:.2f}")
+    while True:
+        limpar_tela()
+        print("=========================================")
+        print("   SIMULADOR DE PLANEJAMENTO FINANCEIRO  ")
         print("=========================================\n")
         
-    except ValueError:
-        print("⚠️ Por favor, digite um número válido para o salário.")
+        try:
+            entrada = input("Digite o seu salário líquido total (ou 'sair' para encerrar): ").strip()
+            
+            if entrada.lower() == 'sair':
+                limpar_tela()
+                print("Planejamento encerrado. Até logo! 👋\n")
+                break
+
+            salario = float(entrada)
+            
+            essenciais = salario * 0.50
+            lazer = salario * 0.30
+            investimentos = salario * 0.20
+            
+            limpar_tela()
+            print("=========================================")
+            print("         RESULTADO DO PLANEJAMENTO       ")
+            print("=========================================")
+            print(f"💰 SALÁRIO TOTAL: R$ {salario:.2f}")
+            print("-----------------------------------------")
+            print(f"🏠 Essenciais (50%):    R$ {essenciais:.2f}")
+            print(f"🥳 Lazer/Desejos (30%): R$ {lazer:.2f}")
+            print(f"📈 Investimentos (20%): R$ {investimentos:.2f}")
+            print("-----------------------------------------")
+            print(f"\n💡 Sugestão para a fatia de INVESTIMENTOS (R$ {investimentos:.2f}):")
+            print(f"   • Reserva de Emergência / Renda Fixa (70%): R$ {investimentos * 0.70:.2f}")
+            print(f"   • Renda Variável / Ações / FIIs (30%):     R$ {investimentos * 0.30:.2f}")
+            print("=========================================\n")
+            
+        except ValueError:
+            print("\n⚠️ Entrada inválida! Por favor, digite um número para o salário.")
+
+        # O comando que faz as mensagens sumirem após o clique:
+        input("Pressione ENTER para limpar a tela e fazer outro cálculo...")
 
 if __name__ == "__main__":
     calcular_orcamento()
