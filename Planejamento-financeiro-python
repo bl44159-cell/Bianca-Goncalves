@@ -1,7 +1,7 @@
 import os
 
 def limpar_tela():
-    """Limpa o terminal para manter a interface organizada"""
+  
     os.system('cls' if os.name == 'nt' else 'clear')
 
 def calcular_orcamento():
